@@ -4,7 +4,7 @@ allprojects {
 			maven { url 'https://jitpack.io' }
 		}
 	}
-implementation 'com.github.gyadministrator:CustomAddressSelect:1.0'
+implementation 'com.github.gyadministrator:CustomAddressSelect:1.1'
 
 主要代码
 package com.android.custom.address;

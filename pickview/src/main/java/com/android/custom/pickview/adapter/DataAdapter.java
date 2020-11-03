@@ -66,8 +66,8 @@ public class DataAdapter extends BaseAdapter {
         } else {
             viewHolder.data_img.setVisibility(View.GONE);
         }
-        if (CustomPickerView.customHook != null) {
-            viewHolder.data_img.setImageDrawable(CustomPickerView.customHook);
+        if (CustomPickerView.selectIcon != 0) {
+            viewHolder.data_img.setImageResource(CustomPickerView.selectIcon);
         }
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(AbsListView.LayoutParams.WRAP_CONTENT, CustomPickerView.dataHeight);
         viewHolder.textView.setLayoutParams(params);
