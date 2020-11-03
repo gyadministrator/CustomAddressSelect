@@ -17,10 +17,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="3"
             android:padding="10dp"
-            android:text="x"
             android:textColor="@color/picker_text_color"
             android:textSize="15sp"
-            tools:ignore="HardcodedText" />
+            tools:ignore="HardcodedText"
+            tools:text="x" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -34,7 +34,7 @@
                 android:id="@+id/data_img"
                 android:layout_width="16dp"
                 android:layout_height="12dp"
-                android:background="@drawable/ic_quality_selected"
+                android:src="@drawable/ic_quality_selected"
                 android:visibility="gone" />
         </LinearLayout>
     </LinearLayout>
