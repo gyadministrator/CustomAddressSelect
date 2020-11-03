@@ -1,0 +1,2 @@
+include ':app', ':pickview'
+rootProject.name = 'CustomAddressSelect'
