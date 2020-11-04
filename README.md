@@ -1,9 +1,11 @@
 引入module
+
 allprojects {
 		repositories {
 			maven { url 'https://jitpack.io' }
 		}
 	}
+
 implementation 'com.github.gyadministrator:CustomAddressSelect:1.3'
 
 主要代码
@@ -12,37 +14,60 @@ package com.android.custom.address;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
+
 import android.os.Bundle;
+
 import android.util.Log;
+
 import android.view.View;
+
 import android.widget.Button;
+
 import android.widget.Toast;
 
 import com.android.custom.pickview.entity.PickerData;
+
 import com.android.custom.pickview.entity.ProvinceBean;
+
 import com.android.custom.pickview.entity.SecondBean;
+
 import com.android.custom.pickview.entity.ThirdBean;
+
 import com.android.custom.pickview.listener.OnPickerClickListener;
+
 import com.android.custom.pickview.util.JsonArrayUtil;
+
 import com.android.custom.pickview.util.JsonUtil;
+
 import com.android.custom.pickview.view.CustomPickerView;
 
 import org.json.JSONArray;
+
 import org.json.JSONException;
+
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+
 import java.util.HashMap;
+
 import java.util.Iterator;
+
 import java.util.List;
+
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     private List<String> mProvinceData = new ArrayList<>();
+
     private Map<String, List<String>> mSecondData = new HashMap<>();
+
     private Map<String, List<String>> mThirdData = new HashMap<>();
+
     private Button button;
+
     private CustomPickerView pickerView;
+
     private static final String TAG = "MainActivity";
 
     @Override
@@ -196,31 +221,56 @@ public class MainActivity extends AppCompatActivity {
 TeaPickerView属性大全
 方法名	属性
 setHeights(int mHeight)	显示具体的高度(dp),设置0是自适应(高度没有默认值，需要主动设置)
+
 setScreenH(int num)	显示的高度占屏幕的百分比
+
 setBackground(int color)	设置整体的背景颜色 默认是#ffffff
+
 setRadius(int mRadius)	设置圆角，默认0
+
 setContentBackground(int color)	内容栏的背景颜色 默认是#ffffff
+
 setContentHeight(int mHeight)	内容栏的高度(dp) 默认是50dp
+
 setContentText(int size,int color)	内容栏字体的大小和颜色, 默认是16sp,#0aa666，用此方法会固定颜色
+
 setContentText(ColorStateList drawable)	自定义内容栏字体颜色变换器 在res目录下创建color文件夹用selector 默认颜色#555 选中颜色#0aa666
+
 setContentLine(boolean bl)	内容栏选中是否有下划线 默认不开启
+
 setContentLineColor(Drawable drawable)	自定义内容栏下划线用layer-list 默认是下边框描边 颜色#0fbc72 高度1dp
+
 setLine(int mHeight,int color)	分割线的高度和颜色 默认是0.5dp #e5e5e5
+
 setitemHeight(int mHeight)	设置list的item的高度(dp) 默认是40dp
+
 setListText(int size,int color)	设置list的字体大小和颜色 默认是15 #555
+
 setScrollBal(boolean bl)	设置list是否显示滚动条,默认false
+
 setAlpha(float mFloat)	设置阴影层的透明度 默认是0.5f
+
 setDiscolour(boolean bl)	设置选中项是否加色，默认true
+
 setDiscolourColor(int color)	设置选中项加色的颜色值，默认#0aa666
+
 setDiscolourHook(boolean bl)	设置选中项是否有√图标，默认false
+
 setCustomHook(Drawable drawable)	自定义√图标
+
 build()	参数设置完毕，一定要build一下
+
 方法名	属性
 setInitSelectText(String firstText)	初始文字
+
 setFirstDatas(List mFirstDatas)	设置一级数据
+
 setSecondDatas(Map<String, List> mSecondDatas)	设置二级数据
+
 setThirdDatas(Map<String, List> mThirdDatas)	设置三级数据
+
 setFourthDatas(Map<String, List> mFourthDatas)	设置四级数据
+
 给出参考bean地址
 一级ProvinceBean 二级SecondBean 三级ThirdBean
 
@@ -233,6 +283,7 @@ setFourthDatas(Map<String, List> mFourthDatas)	设置四级数据
 	<item android:state_focused="true" android:color="@color/picker_select_text_color"/>
 	<item android:color="@color/picker_text_color"/>
 </selector>
+
 默认内容栏下划线
 <?xml version="1.0" encoding="UTF-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
