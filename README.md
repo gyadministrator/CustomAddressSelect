@@ -1,9 +1,13 @@
 引入module
 
 allprojects {
+
 		repositories {
+
 			maven { url 'https://jitpack.io' }
+
 		}
+
 	}
 
 implementation 'com.github.gyadministrator:CustomAddressSelect:1.3'
@@ -77,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
         initView();
         PickerData pickerData = readJson();
         initData(pickerData);
-        //initPickerView();
     }
 
     private void initData(PickerData pickerData) {
@@ -164,62 +167,13 @@ public class MainActivity extends AppCompatActivity {
     private void initView() {
         button = findViewById(R.id.mButton);
     }
-
-    private void initPickerView() {
-        //一级列表
-        ProvinceBean provinceBean = new ProvinceBean();
-        mProvinceData.addAll(provinceBean.getRepData().getProvince());
-
-        //二级列表
-        SecondBean secondBean = new SecondBean();
-        mSecondData.putAll(secondBean.getRepData().getSecond());
-
-        //三级列表
-        ThirdBean thirdBean = new ThirdBean();
-        mThirdData.putAll(thirdBean.getRepData().getThird());
-
-        Log.i("json", JsonArrayUtil.toJson(mProvinceData));
-        Log.i("json", JsonArrayUtil.toJson(mSecondData));
-        Log.i("json", JsonArrayUtil.toJson(mThirdData));
-
-        //设置数据有多少层级
-        PickerData data = new PickerData();
-        data.setFirstData(mProvinceData);//json: ["广东","江西"]
-        data.setSecondData(mSecondData);//json: {"江西":["南昌","赣州"],"广东":["广州","深圳","佛山","东莞"]}
-        data.setThirdData(mThirdData);//json: {"广州":["天河区","白云区","番禹区","花都区"],"赣州":["章贡区","黄金开发区"],"东莞":["东城","南城"],"深圳":["南山区","宝安区","龙华区"],"佛山":["禅城区","顺德区"],"南昌":["东湖区","青云谱区","青山湖区"]}
-
-        data.setInitSelectText("请选择");
-
-        pickerView = new CustomPickerView(this, data);
-        pickerView.setScreenH(3)
-                .setDiscolourHook(true)
-                .setRadius(0)
-                .setContentLine(true)
-                .setRadius(0)
-                .build();
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //显示选择器
-                pickerView.show(button);
-            }
-        });
-
-        //选择器点击事件
-        pickerView.setOnPickerClickListener(new OnPickerClickListener() {
-            @Override
-            public void OnPickerClick(PickerData pickerData) {
-                Toast.makeText(MainActivity.this, pickerData.getFirstText() + "," + pickerData.getSecondText() + "," + pickerData.getThirdText(), Toast.LENGTH_SHORT).show();
-                pickerView.dismiss();//关闭选择器
-            }
-        });
-    }
 }
 
 
 TeaPickerView属性大全
+
 方法名	属性
+
 setHeights(int mHeight)	显示具体的高度(dp),设置0是自适应(高度没有默认值，需要主动设置)
 
 setScreenH(int num)	显示的高度占屏幕的百分比
