@@ -54,13 +54,17 @@ public class CustomPickerView extends PopupWindow implements View.OnClickListene
     public static int dataColor;
     public static int dataHeight;
     private float alpha = 0.5f;
-    public static boolean contentLine = false;
-    public static Drawable contentLineDrawable;
-    public static boolean scrollBal = false;
+    private static boolean contentLine = false;
+    private static Drawable contentLineDrawable;
+    private static boolean scrollBal = false;
     public static boolean discolour = true;
     public static int discolourColor;
     public static boolean discolourHook = false;
     public static int selectIcon;
+    private static String pickTitle;
+    private static String btnText;
+    private static int btnColor;
+
 
     public CustomPickerView(Activity context, PickerData pickerData) {
         super(context);
@@ -202,6 +206,24 @@ public class CustomPickerView extends PopupWindow implements View.OnClickListene
         return this;
     }
 
+    //设置按钮颜色
+    public CustomPickerView setBtnColor(int color) {
+        btnColor = color;
+        return this;
+    }
+
+    //设置按钮文字
+    public CustomPickerView setBtnText(String desc) {
+        btnText = desc;
+        return this;
+    }
+
+    //设置标题
+    public CustomPickerView setTitle(String title) {
+        pickTitle = title;
+        return this;
+    }
+
     //自定义√图标
     public CustomPickerView setCustomHook(int res) {
         selectIcon = res;
@@ -271,12 +293,9 @@ public class CustomPickerView extends PopupWindow implements View.OnClickListene
         mTextSecond.setOnClickListener(this);
         mTextThird.setOnClickListener(this);
         pickerConfirm.setOnClickListener(this);
-
-
         if (!TextUtils.isEmpty(pickerData.getPickerTitleName())) {
             pickerTitleName.setText(pickerData.getPickerTitleName());
         }
-
     }
 
     public void show(View view) {
@@ -306,6 +325,15 @@ public class CustomPickerView extends PopupWindow implements View.OnClickListene
     }
 
     private void initData() {
+        if (!TextUtils.isEmpty(pickTitle)) {
+            pickerTitleName.setText(pickTitle);
+        }
+        if (!TextUtils.isEmpty(btnText)) {
+            pickerConfirm.setText(btnText);
+        }
+        if (btnColor != 0) {
+            pickerConfirm.setTextColor(btnColor);
+        }
         currData = pickerData.getCurrDatas(index, "");
         adapter = new DataAdapter(context, currData);
         pickerList.setVerticalScrollBarEnabled(scrollBal);
@@ -380,6 +408,11 @@ public class CustomPickerView extends PopupWindow implements View.OnClickListene
             currData = pickerData.getCurrDatas(index, mTextFourth.getText().toString());
             adapter.setList(currData, mTextFourth.getText().toString());
             underlineState();
+        } else if (id == R.id.pickerConfirm) {
+            //确定事件
+            if (listener != null) {
+                listener.OnPickerClick(pickerData);
+            }
         }
     }
 

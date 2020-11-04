@@ -4,7 +4,7 @@ allprojects {
 			maven { url 'https://jitpack.io' }
 		}
 	}
-implementation 'com.github.gyadministrator:CustomAddressSelect:1.2'
+implementation 'com.github.gyadministrator:CustomAddressSelect:1.3'
 
 主要代码
 package com.android.custom.address;
@@ -61,8 +61,11 @@ public class MainActivity extends AppCompatActivity {
                 .setDiscolourHook(true)
                 .setRadius(0)
                 .setContentLine(true)
-                .setContentText(16,Color.RED)
-                .setListText(16,Color.RED)
+                .setContentText(16, Color.RED)
+                .setListText(16, Color.RED)
+                .setTitle("请选择地址")
+                .setBtnText("确定")
+                .setBtnColor(Color.RED)
                 .setRadius(0)
                 .build();
 
